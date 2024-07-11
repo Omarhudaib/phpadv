@@ -1,0 +1,23 @@
+<html> 
+
+<body>
+   <?php if (!isset($_SESSION['visited'])) {
+        $visited = (int)file_get_contents($visitor);
+        $visited = $visited + 1;
+        file_put_contents($visitor, $visited);
+        $_SESSION['visited'] = true;
+        $visited = file_get_contents($visitor);
+    } else {
+        $visited = file_get_contents($visitor);
+    }
+    ?>
+<form action="calc.php" method="GET">
+Name: <input type="text" name="name"><br>
+E-mail: <input type="text" name="email"><br>
+<input type="submit">
+</form>
+<br>
+
+
+</body>
+</html>
